@@ -2,7 +2,7 @@
 
 ## Team PineApple
 
-<img src="pineapple.jpg">
+<img src="pineapple.png">
 
 ## Team Members: 
 
