@@ -20,3 +20,6 @@ We will build a mobile application using the React Native framework. React Nativ
 
 ## Project Management Tool:
 For our project management tool, we will use Trello. Trello will allow us to stay organized as a team by creating tasks and checklists with color-coded labels that will make it easy for the team to follow along and see the progress of the project. We will also be able to assign team members to different parts of the project at a time, that way everyone knows which tasks to work on. Finally, this project management tool will also allow us to set clear objectives each week, as well as, explicit deadlines to stay on schedule. 
+
+
+Hellooo
