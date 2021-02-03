@@ -1,4 +1,4 @@
-# DCPA UF Mobile Application Project
+# DCPA UF Mobile Application
 
 ## Team PineApple
 
