@@ -7,5 +7,5 @@ jobs:
       steps:
         - checkout
         - run: npm install
-        - run: npm i -g mocha
+        - run: sudo npm i -g mocha
         - run: npm test
