@@ -87,6 +87,6 @@ app.get("/login", async (req, res) => {
 });
 
 //Checking that the server is working
-app.listen(port, () => {
+app.listen(process.env.PORT || port, () => {
   console.log(`listening at http://localhost:${port}`);
 });
