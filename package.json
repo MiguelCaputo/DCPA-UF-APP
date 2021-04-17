@@ -1,19 +1,33 @@
 {
-  "name": "Discussion4",
+  "name": "dcpa-uf-app",
   "version": "1.0.0",
-  "description": "Testing Practice",
-  "main": "server.js",
+  "description": "",
+  "main": "index.js",
+  "engines": {
+    "node": "10.19.0",
+    "npm": "7.6.3",
+    "yarn": "1.5.1"
+  },
   "scripts": {
-    "test": "mocha server.test.js",
-    "start": "node server.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cd app && node index.js",
+    "server": "cd app && node index.js"
   },
-  "author": "Medhir Bhargava & Alex Webber",
-  "license": "MIT",
-  "devDependencies": {
-    "should": "^7.1.1"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MiguelCaputo/DCPA-UF-APP.git"
   },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MiguelCaputo/DCPA-UF-APP/issues"
+  },
+  "homepage": "https://github.com/MiguelCaputo/DCPA-UF-APP#readme",
   "dependencies": {
-    "mocha": "^5.2.0",
-    "request": "^2.67.0"
+    "body-parser": "^1.19.0",
+    "bson": "^4.3.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongodb": "^3.6.6"
   }
 }

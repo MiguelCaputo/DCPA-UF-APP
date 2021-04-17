@@ -1,11 +1,12 @@
 import { CalendarList } from "react-native-calendars";
 import { ImageBackground } from "react-native";
 import React from "react";
+import { Font } from "expo";
 
 var CalendarComponent = () => {
   return (
     <ImageBackground
-      source={require("../assets/background.png")}
+      source={require("../assets/back.png")}
       style={{ width: "100%", height: "100%" }}
     >
       <CalendarList

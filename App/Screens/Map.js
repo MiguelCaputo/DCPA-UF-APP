@@ -9,8 +9,6 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "column",
     justifyContent: "center",
-    marginLeft: "10%",
-    marginRight: "10%",
   },
   buttonStyle: {
     padding: 10,
@@ -40,7 +38,7 @@ const button = (title, loc, color) => {
         }}
         buttonStyle={{
           backgroundColor: color,
-          borderRadius: 100,
+          borderRadius: 10,
         }}
         onPress={() => SearchLocation(0, 0, loc)}
       />
@@ -51,7 +49,7 @@ const button = (title, loc, color) => {
 const MapComponent = () => {
   return (
     <ImageBackground
-      source={require("../assets/background.png")}
+      source={require("../assets/back.png")}
       style={{ width: "100%", height: "100%" }}
     >
       <View style={styles.container}>
