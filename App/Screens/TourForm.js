@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Formik } from "formik";
 import RNPickerSelect from "react-native-picker-select";
+import { RadioButton } from "react-native-paper";
 import {
   StyleSheet,
   View,
@@ -14,7 +15,7 @@ import { Button } from "react-native-elements";
 
 //Rendering the form to send emails
 const TourFormComponent = () => {
-  const [selectedLanguage, setSelectedLanguage] = useState();
+  const [value, setValue] = useState("");
 
   return (
     <ImageBackground
@@ -30,15 +31,23 @@ const TourFormComponent = () => {
               lastname: "",
               ufid: "",
               useremail: "",
-              tourtime: "10:00 A.M.",
-              tourday: "Monday",
+              tourtime: "",
+              tourday: "",
               tourType: "In person",
             }}
             onSubmit={(values) => {
-              let email = `Hello,\n\nMy name is ${values.firstname} ${values.lastname}. I am sending this email because I would like to schedule a tour with the UF College of Design, Construction, and Planning Ambassadors. I would like to schedule a ${values.tourType} on your next available ${values.tourday} at ${selectedLanguage} Please confirm if this is possible.\n\nThank you for your time,\n\n${values.firstname} ${values.lastname}\n${values.useremail}\n${values.ufid}`;
-              Linking.openURL(
-                `mailto:dcpambassadors@gmail.com?subject=Schedule Tour&body=${email}`
-              );
+              if (values.firstname == "") alert("Please Add First Name");
+              else if (values.lastname == "") alert("Please Add Last Name");
+              else if (values.useremail == "") alert("Please Add Email");
+              else if (values.tourtime == "") alert("Please Select Tour Time");
+              else if (values.tourday == "") alert("Please Select Tour Day");
+              else if (value == "") alert("Please Select Tour Type");
+              else {
+                let email = `Hello,\n\nMy name is ${values.firstname} ${values.lastname}. I am sending this email because I would like to schedule a tour with the UF College of Design, Construction, and Planning Ambassadors. I would like to schedule ${value} tour on your next available ${values.tourday} at ${values.tourtime} Please confirm if this is possible.\n\nThank you for your time,\n\n${values.firstname} ${values.lastname}\n${values.useremail}\n${values.ufid}`;
+                Linking.openURL(
+                  `mailto:dcpambassadors@gmail.com?subject=Schedule Tour&body=${email}`
+                );
+              }
             }}
           >
             {(props) => (
@@ -60,7 +69,7 @@ const TourFormComponent = () => {
                   />
                 </View>
                 <View style={styles.inputContainer}>
-                  <Text style={styles.inputTitle}>UF ID</Text>
+                  <Text style={styles.inputTitle}>UF ID (optional)</Text>
                   <TextInput
                     onChangeText={props.handleChange("ufid")}
                     value={props.values.ufid}
@@ -96,9 +105,26 @@ const TourFormComponent = () => {
                       { label: "4:00 P.M.", value: "4:00 P.M." },
                       { label: "4:30 P.M.", value: "4:30 P.M." },
                     ]}
-                    onValueChange={props.handleChange("tourtime")}
                     useNativeAndroidPickerStyle={false}
-                    style={{ inputAndroid: { color: "black" } }}
+                    onValueChange={props.handleChange("tourtime")}
+                    style={{
+                      inputAndroid: {
+                        color: "black",
+                        height: 40,
+                        marginLeft: 12,
+                        marginRight: 12,
+                        borderWidth: 1,
+                        paddingHorizontal: 5,
+                      },
+                      inputIOS: {
+                        color: "black",
+                        height: 40,
+                        marginLeft: 12,
+                        marginRight: 12,
+                        borderWidth: 1,
+                        paddingHorizontal: 5,
+                      },
+                    }}
                   />
                 </View>
                 <View style={styles.inputContainer}>
@@ -115,55 +141,72 @@ const TourFormComponent = () => {
                     ]}
                     useNativeAndroidPickerStyle={false}
                     onValueChange={props.handleChange("tourday")}
-                    style={{ inputAndroid: { color: "black" } }}
+                    style={{
+                      inputAndroid: {
+                        color: "black",
+                        height: 40,
+                        marginLeft: 12,
+                        marginRight: 12,
+                        borderWidth: 1,
+                        paddingHorizontal: 5,
+                      },
+                      inputIOS: {
+                        color: "black",
+                        height: 40,
+                        marginLeft: 12,
+                        marginRight: 12,
+                        borderWidth: 1,
+                        paddingHorizontal: 5,
+                      },
+                    }}
                   />
                 </View>
+                <Text></Text>
+
                 <View
                   style={{
-                    flex: 1,
-                    flexDirection: "row",
                     alignItems: "center",
                     justifyContent: "center",
-                    marginBottom: 10,
-                    marginTop: 7,
+                    paddingBottom: 15,
                   }}
                 >
-                  <Button
-                    title={"In Person"}
-                    titleStyle={{
-                      color: "white",
-                      fontSize: 15,
-                      fontWeight: "bold",
-                    }}
-                    buttonStyle={{
-                      backgroundColor: "#ea6227",
-                      borderRadius: 8,
-                      marginRight: 12,
-                      width: 100,
-                      height: 40,
-                    }}
-                    onPress={props.handleChange("tourType")}
-                    value={props.values.tourType}
-                  />
-                  <Button
-                    title={"Virtual"}
-                    titleStyle={{
-                      color: "white",
-                      fontSize: 15,
-                      fontWeight: "bold",
-                    }}
-                    buttonStyle={{
-                      backgroundColor: "#ea6227",
-                      borderRadius: 8,
-                      marginLeft: 12,
-                      width: 100,
-                      height: 40,
-                    }}
-                    onPress={props.handleChange("tourType")}
-                    value={props.values.tourType}
-                  />
+                  <RadioButton.Group
+                    onValueChange={(value) => setValue(value)}
+                    value={value}
+                  >
+                    <RadioButton.Item
+                      label="In Person"
+                      labelStyle={{
+                        color: "white",
+                        fontSize: 15,
+                        fontWeight: "bold",
+                      }}
+                      style={{
+                        backgroundColor: "#ea6227",
+                        borderRadius: 8,
+                        width: 220,
+                        height: 40,
+                      }}
+                      value="an in-person"
+                    />
+                    <Text></Text>
+                    <RadioButton.Item
+                      label="Virtual"
+                      labelStyle={{
+                        color: "white",
+                        fontSize: 15,
+                        fontWeight: "bold",
+                      }}
+                      style={{
+                        backgroundColor: "#ea6227",
+                        borderRadius: 8,
+                        width: 220,
+                        height: 40,
+                      }}
+                      value="a virtual"
+                    />
+                  </RadioButton.Group>
                 </View>
-
                 <Button
                   title="Send Email"
                   titleStyle={{
