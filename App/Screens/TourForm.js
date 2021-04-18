@@ -185,7 +185,7 @@ const TourFormComponent = () => {
                         backgroundColor: "#ea6227",
                         borderRadius: 8,
                         width: 220,
-                        height: 40,
+                        height: 50,
                       }}
                       value="an in-person"
                     />
@@ -201,7 +201,7 @@ const TourFormComponent = () => {
                         backgroundColor: "#ea6227",
                         borderRadius: 8,
                         width: 220,
-                        height: 40,
+                        height: 50,
                       }}
                       value="a virtual"
                     />
