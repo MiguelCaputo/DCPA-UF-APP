@@ -50,7 +50,7 @@ export class Event extends Component {
   getURL = () => {
     var current_url = "http://localhost:3001";
     if (process.env.NODE_ENV.localeCompare("development") == 0)
-      current_url = "https://dcpa-app.herokuapp.com";
+      current_url = process.env.URL;
     return current_url;
   };
 

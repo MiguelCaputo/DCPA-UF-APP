@@ -10,7 +10,6 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { Button } from "react-native-elements";
 import TourFormComponent from "./Screens/TourForm";
-import CalendarComponent from "./Screens/Calendar";
 import MapComponent from "./Screens/Map";
 import HomeComponent from "./Screens/Home";
 import { Event } from "./Screens/Events";
@@ -38,6 +37,15 @@ const createScreen = (name, comp, color, trans) => {
     />
   );
 };
+
+function LogOutComponent() {
+  //Initializing the context for sign out
+  const { signOut } = React.useContext(AuthContext);
+  signOut();
+
+  //Rendering
+  return signOut;
+}
 
 //Function to render the login form
 function LoginComponent() {
@@ -134,7 +142,7 @@ const App = () => {
   getURL = () => {
     var current_url = "http://localhost:3001";
     if (process.env.NODE_ENV.localeCompare("development") == 0)
-      current_url = "https://dcpa-app.herokuapp.com";
+      current_url = process.env.URL;
     return current_url;
   };
 
@@ -173,7 +181,6 @@ const App = () => {
           {state.userToken == null ? (
             <>
               {createScreen("Home", HomeComponent, "#ea6227", true)}
-              {createScreen("Calendar", CalendarComponent, "#ea6227", true)}
               {createScreen("Map", MapComponent, "#ea6227", true)}
               {createScreen("Event", Event, "#ea6227", false)}
               {createScreen("About Us", About, "#ea6227", true)}
@@ -201,6 +208,7 @@ const App = () => {
               {createScreen("Admin Event", AdminEvent, "#ea6227", false)}
               {createScreen("About Us", About, "#ea6227", true)}
               {createScreen("Contact Us", Contact, "#ea6227", true)}
+              {createScreen("Log Out", LogOutComponent, "#ea6227", true)}
               {createScreen(
                 "Schedule Tours",
                 ScheduleTourComponent,

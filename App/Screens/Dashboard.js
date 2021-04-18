@@ -63,6 +63,7 @@ const DashboardComponent = ({ navigation }) => {
         {button("MAP", "Map", navigation, "#24449b")}
         {button("ABOUT US", "About Us", navigation, "#ea6227")}
         {button("CONTACT US", "Contact Us", navigation, "#24449b")}
+        {button("LOG OUT", "Log Out", navigation, "#ea6227")}
       </View>
     </ImageBackground>
   );
