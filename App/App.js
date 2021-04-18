@@ -153,6 +153,9 @@ const App = () => {
         var username = data.username;
         var password = data.password;
         var url = getURL();
+        console.log(url);
+        console.log(process.env.URL);
+        console.log(process.env.URI);
         const res1 = await Axios.get(url + "/login", {
           headers: {
             "content-type": "text/json",
