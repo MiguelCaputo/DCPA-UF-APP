@@ -5,7 +5,7 @@ const myParser = require("body-parser");
 //Initializing variables
 var app = express();
 
-const port = 3001 || process.env.PORT;
+const port = 3001;
 const MongoClient = require("mongodb").MongoClient;
 var cors = require("cors");
 const { ObjectID } = require("bson");
@@ -87,6 +87,6 @@ app.get("/login", async (req, res) => {
 });
 
 //Checking that the server is working
-app.listen(port, () => {
+app.listen(process.env.PORT || port, () => {
   console.log(`listening at http://localhost:${port}`);
 });
