@@ -136,11 +136,15 @@ const App = () => {
       signIn: async (data) => {
         var username = data.username;
         var password = data.password;
-        const res1 = await Axios.get("http://10.0.2.2:3001/login", {
-          headers: {
-            "content-type": "text/json",
-          },
-        });
+        const res1 = await Axios.get(
+          "https://dcpa-app.herokuapp.com/login" ||
+            "http://localhost:3001/login",
+          {
+            headers: {
+              "content-type": "text/json",
+            },
+          }
+        );
         var creds = res1.data.message[0];
         if (creds.username == username && creds.password == password) {
           dispatch({ type: "SIGN_IN", token: "dummy-auth-token" });
