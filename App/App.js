@@ -130,11 +130,11 @@ const App = () => {
     }
   );
 
+  // Get the server url
   getURL = () => {
-    const current_url = "";
-    if (process.env.NODE_ENV.localeCompare("production") == 0)
+    var current_url = "http://localhost:3001";
+    if (process.env.NODE_ENV.localeCompare("development") == 0)
       current_url = "https://dcpa-app.herokuapp.com";
-    else current_url = "http://localhost:3001";
     return current_url;
   };
 
@@ -144,8 +144,8 @@ const App = () => {
       signIn: async (data) => {
         var username = data.username;
         var password = data.password;
-        console.log("aqui");
-        const res1 = await Axios.get(this.getURL() + "/login", {
+        var url = getURL();
+        const res1 = await Axios.get(url + "/login", {
           headers: {
             "content-type": "text/json",
           },

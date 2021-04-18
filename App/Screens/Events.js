@@ -46,11 +46,11 @@ export class Event extends Component {
     this.setState({ currEvent: event });
   };
 
+  // Get the server url
   getURL = () => {
-    const current_url = "";
-    if (process.env.NODE_ENV.localeCompare("production") == 0)
+    var current_url = "http://localhost:3001";
+    if (process.env.NODE_ENV.localeCompare("development") == 0)
       current_url = "https://dcpa-app.herokuapp.com";
-    else current_url = "http://localhost:3001";
     return current_url;
   };
 
@@ -68,7 +68,7 @@ export class Event extends Component {
 
   //Get all events from database
   getEvents = async () => {
-    const ev = await Axios.get(this.getURL + "/event", {
+    const ev = await Axios.get(getURL() + "/event", {
       headers: {
         "content-type": "text/json",
       },
