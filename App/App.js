@@ -153,6 +153,8 @@ const App = () => {
         var creds = res1.data.message[0];
         if (creds.username == username && creds.password == password) {
           dispatch({ type: "SIGN_IN", token: "dummy-auth-token" });
+        } else {
+          alert("Re-enter username and password!");
         }
       },
       signOut: () => dispatch({ type: "SIGN_OUT" }),
