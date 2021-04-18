@@ -78,7 +78,7 @@ export class AdminEvent extends Component {
       summary: summary,
     });
 
-    const url = this.getURL()
+    const url = this.getURL();
     //Sending the event to the database
     var config = {
       method: "post",
@@ -102,7 +102,7 @@ export class AdminEvent extends Component {
       summary: currentEvent.summary,
     });
 
-    const url = this.getURL()
+    const url = this.getURL();
     //Sending the event to the database
     var config = {
       method: "post",
@@ -199,13 +199,12 @@ export class AdminEvent extends Component {
   };
 
   getURL = () => {
-    const current_url = ""
-    if process.env.NODE_ENV = "production"
-      current_url = "https://dcpa-app.herokuapp.com"
-    else
-      current_url = "http://localhost:3001"
-    return current_url
-  }
+    const current_url = "";
+    if (process.env.NODE_ENV.localeCompare("production") == 0)
+      current_url = "https://dcpa-app.herokuapp.com";
+    else current_url = "http://localhost:3001";
+    return current_url;
+  };
 
   getEvents = async () => {
     const ev = await Axios.get(this.getURL() + "/event", {

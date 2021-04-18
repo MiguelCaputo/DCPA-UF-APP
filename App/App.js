@@ -131,13 +131,12 @@ const App = () => {
   );
 
   getURL = () => {
-    const current_url = ""
-    if process.env.NODE_ENV = "production"
-      current_url = "https://dcpa-app.herokuapp.com"
-    else
-      current_url = "http://localhost:3001"
-    return current_url
-  }
+    const current_url = "";
+    if (process.env.NODE_ENV.localeCompare("production") == 0)
+      current_url = "https://dcpa-app.herokuapp.com";
+    else current_url = "http://localhost:3001";
+    return current_url;
+  };
 
   //Confirming the login with the database
   const authContext = React.useMemo(
