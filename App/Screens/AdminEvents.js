@@ -78,10 +78,11 @@ export class AdminEvent extends Component {
       summary: summary,
     });
 
+    const url = this.getURL()
     //Sending the event to the database
     var config = {
       method: "post",
-      url: "http://10.0.2.2:3001/addEvent",
+      url: url + "/addEvent",
       headers: {
         "Content-Type": "application/json",
       },
@@ -101,10 +102,11 @@ export class AdminEvent extends Component {
       summary: currentEvent.summary,
     });
 
+    const url = this.getURL()
     //Sending the event to the database
     var config = {
       method: "post",
-      url: "http://10.0.2.2:3001/delete",
+      url: url + "/delete",
       headers: {
         "Content-Type": "application/json",
       },
@@ -196,9 +198,17 @@ export class AdminEvent extends Component {
     });
   };
 
-  //Get all events from database
+  getURL = () => {
+    const current_url = ""
+    if process.env.NODE_ENV = "production"
+      current_url = "https://dcpa-app.herokuapp.com"
+    else
+      current_url = "http://localhost:3001"
+    return current_url
+  }
+
   getEvents = async () => {
-    const ev = await Axios.get("http://10.0.2.2:3001/event", {
+    const ev = await Axios.get(this.getURL() + "/event", {
       headers: {
         "content-type": "text/json",
       },

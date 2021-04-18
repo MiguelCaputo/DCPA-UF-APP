@@ -46,6 +46,15 @@ export class Event extends Component {
     this.setState({ currEvent: event });
   };
 
+  getURL = () => {
+    const current_url = ""
+    if process.env.NODE_ENV = "production"
+      current_url = "https://dcpa-app.herokuapp.com"
+    else
+      current_url = "http://localhost:3001"
+    return current_url
+  }
+
   // Set all the variables to their original state
   cleanState = () => {
     this.setState({
@@ -60,7 +69,7 @@ export class Event extends Component {
 
   //Get all events from database
   getEvents = async () => {
-    const ev = await Axios.get("http://10.0.2.2:3001/event", {
+    const ev = await Axios.get(this.getURL + "/event", {
       headers: {
         "content-type": "text/json",
       },

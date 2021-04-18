@@ -11,6 +11,8 @@ var cors = require("cors");
 const { ObjectID } = require("bson");
 const uri =
   "mongodb+srv://test:t3st1ngpl34s3@cluster0.ecjyu.mongodb.net/test?retryWrites=true&w=majority";
+//const uri = process.env.URI
+//create a config.js
 
 app.use(cors());
 
@@ -116,7 +118,7 @@ app.post("/delete", async (req, res) => {
   test();
 });
 
-//Checking that the server is working
 app.listen(process.env.PORT || port, () => {
+  //Checking that the server is working
   console.log(`listening at http://localhost:${port}`);
 });

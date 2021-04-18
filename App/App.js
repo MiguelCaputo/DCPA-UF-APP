@@ -130,6 +130,15 @@ const App = () => {
     }
   );
 
+  getURL = () => {
+    const current_url = ""
+    if process.env.NODE_ENV = "production"
+      current_url = "https://dcpa-app.herokuapp.com"
+    else
+      current_url = "http://localhost:3001"
+    return current_url
+  }
+
   //Confirming the login with the database
   const authContext = React.useMemo(
     () => ({
@@ -137,7 +146,7 @@ const App = () => {
         var username = data.username;
         var password = data.password;
         console.log("aqui");
-        const res1 = await Axios.get("http://10.0.2.2:3001/login", {
+        const res1 = await Axios.get(this.getURL() + "/login", {
           headers: {
             "content-type": "text/json",
           },
