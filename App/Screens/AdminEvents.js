@@ -81,7 +81,9 @@ export class AdminEvent extends Component {
     //Sending the event to the database
     var config = {
       method: "post",
-      url: "http://10.0.2.2:3001/addEvent",
+      url:
+        "https://dcpa-app.herokuapp.com/addEvent" ||
+        "http://localhost:3001/addEvent",
       headers: {
         "Content-Type": "application/json",
       },
@@ -174,11 +176,14 @@ export class AdminEvent extends Component {
 
   //Get all events from database
   getEvents = async () => {
-    const ev = await Axios.get("http://10.0.2.2:3001/event", {
-      headers: {
-        "content-type": "text/json",
-      },
-    }).catch((error) => console.log(error));
+    const ev = await Axios.get(
+      "https://dcpa-app.herokuapp.com/event" || "http://localhost:3001/event",
+      {
+        headers: {
+          "content-type": "text/json",
+        },
+      }
+    ).catch((error) => console.log(error));
     let arr = ev.data.message;
     //Pushing all events to the events array
     for (let i = 0; i < arr.length; i++) {
