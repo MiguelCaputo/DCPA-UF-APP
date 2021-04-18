@@ -1,7 +1,7 @@
 const { query, Router } = require("express");
 const express = require("express");
 const myParser = require("body-parser");
-const config = require("../config");
+
 //Initializing variables
 var app = express();
 
@@ -9,11 +9,7 @@ const port = 3001;
 const MongoClient = require("mongodb").MongoClient;
 var cors = require("cors");
 const { ObjectID } = require("bson");
-const uri =
-  "mongodb+srv://test:t3st1ngpl34s3@cluster0.ecjyu.mongodb.net/test?retryWrites=true&w=majority";
-//const uri = process.env.URI
-//create a config.js
-
+const uri = process.env.URI;
 app.use(cors());
 
 //Increasing the limit of the request
@@ -30,8 +26,7 @@ app.get("/", (req, res) => {
 //Setting up the connections with the event table
 app.get("/event", async (req, res) => {
   async function test() {
-    const uri =
-      "mongodb+srv://test:t3st1ngpl34s3@cluster0.ecjyu.mongodb.net/test?retryWrites=true&w=majority";
+    const uri = process.env.URI;
     const client = new MongoClient(uri, { useNewUrlParser: true });
     await client.connect();
     const cursor = client.db("test").collection("event").find();
@@ -75,8 +70,7 @@ app.post("/addEvent", (req, res) => {
 //Setting up the login confirmation
 app.get("/login", async (req, res) => {
   async function test() {
-    const uri =
-      "mongodb+srv://test:t3st1ngpl34s3@cluster0.ecjyu.mongodb.net/test?retryWrites=true&w=majority";
+    const uri = process.env.URI;
     const client = new MongoClient(uri, { useNewUrlParser: true });
     await client.connect();
     const cursor = client.db("test").collection("users").find();
@@ -104,8 +98,7 @@ app.post("/delete", async (req, res) => {
   console.log(req.query);
   async function test() {
     const MongoClient = require("mongodb").MongoClient;
-    const uri =
-      "mongodb+srv://test:t3st1ngpl34s3@cluster0.ecjyu.mongodb.net/test?retryWrites=true&w=majority";
+    const uri = process.env.URI;
     const client = new MongoClient(uri, { useNewUrlParser: true });
     await client.connect();
     const cursor = client.db("test").collection("event").deleteMany(request[0]);
