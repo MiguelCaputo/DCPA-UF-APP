@@ -86,6 +86,36 @@ app.get("/login", async (req, res) => {
   test();
 });
 
+// Deleting events
+app.post("/delete", async (req, res) => {
+  var start = req.body.start;
+  var end = req.body.end;
+  var title = req.body.title;
+  var summary = req.body.summary;
+  var request = [
+    {
+      start: start,
+      end: end,
+      title: title,
+      summary: summary,
+    },
+  ];
+  console.log(req.query);
+  async function test() {
+    const MongoClient = require("mongodb").MongoClient;
+    const uri =
+      "mongodb+srv://test:t3st1ngpl34s3@cluster0.ecjyu.mongodb.net/test?retryWrites=true&w=majority";
+    const client = new MongoClient(uri, { useNewUrlParser: true });
+    await client.connect();
+    const cursor = client.db("test").collection("event").deleteMany(request[0]);
+    const results = await cursor;
+    console.log(results);
+    res.send({ message: results });
+    //client.close();
+  }
+  test();
+});
+
 //Checking that the server is working
 app.listen(process.env.PORT || port, () => {
   console.log(`listening at http://localhost:${port}`);

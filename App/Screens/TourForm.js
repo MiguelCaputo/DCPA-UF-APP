@@ -12,6 +12,7 @@ import {
   TextInput,
 } from "react-native";
 import { Button } from "react-native-elements";
+import { Dimensions } from "react-native";
 
 //Rendering the form to send emails
 const TourFormComponent = () => {
@@ -40,7 +41,7 @@ const TourFormComponent = () => {
               else if (values.lastname == "") alert("Please Add Last Name");
               else if (values.useremail == "") alert("Please Add Email");
               else if (values.tourtime == "") alert("Please Select Tour Time");
-              else if (values.tourday == "") alert("Please Select Tour Day");
+              else if (values.tourday == "") alert("Please Select Tour Date");
               else if (value == "") alert("Please Select Tour Type");
               else {
                 let email = `Hello,\n\nMy name is ${values.firstname} ${values.lastname}. I am sending this email because I would like to schedule a tour with the UF College of Design, Construction, and Planning Ambassadors. I would like to schedule ${value} tour on your next available ${values.tourday} at ${values.tourtime} Please confirm if this is possible.\n\nThank you for your time,\n\n${values.firstname} ${values.lastname}\n${values.useremail}\n${values.ufid}`;
@@ -74,6 +75,7 @@ const TourFormComponent = () => {
                     onChangeText={props.handleChange("ufid")}
                     value={props.values.ufid}
                     style={styles.input}
+                    keyboardType="number-pad"
                   />
                 </View>
                 <View style={styles.inputContainer}>
@@ -165,9 +167,12 @@ const TourFormComponent = () => {
 
                 <View
                   style={{
+                    flex: 1,
+                    flexDirection: "row",
                     alignItems: "center",
                     justifyContent: "center",
-                    paddingBottom: 15,
+                    marginBottom: 10,
+                    marginTop: 7,
                   }}
                 >
                   <RadioButton.Group
@@ -184,7 +189,7 @@ const TourFormComponent = () => {
                       style={{
                         backgroundColor: "#ea6227",
                         borderRadius: 8,
-                        width: 220,
+                        width: Dimensions.get("window").width - 96,
                         height: 50,
                       }}
                       value="an in-person"
@@ -200,13 +205,14 @@ const TourFormComponent = () => {
                       style={{
                         backgroundColor: "#ea6227",
                         borderRadius: 8,
-                        width: 220,
+
                         height: 50,
                       }}
                       value="a virtual"
                     />
                   </RadioButton.Group>
                 </View>
+                <Text></Text>
                 <Button
                   title="Send Email"
                   titleStyle={{
@@ -217,8 +223,10 @@ const TourFormComponent = () => {
                   buttonStyle={{
                     backgroundColor: "#ea6227",
                     borderRadius: 10,
-                    marginLeft: 15,
-                    marginRight: 15,
+                    marginLeft: 18,
+                    marginRight: 18,
+                    alignItems: "center",
+                    justifyContent: "center",
                   }}
                   onPress={props.handleSubmit}
                 />

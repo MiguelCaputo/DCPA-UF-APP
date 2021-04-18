@@ -81,15 +81,37 @@ export class AdminEvent extends Component {
     //Sending the event to the database
     var config = {
       method: "post",
-      url:
-        "https://dcpa-app.herokuapp.com/addEvent" ||
-        "http://localhost:3001/addEvent",
+      url: "http://10.0.2.2:3001/addEvent",
       headers: {
         "Content-Type": "application/json",
       },
       data: data,
     };
 
+    Axios(config);
+  };
+
+  // Delete an event
+  deleteEvent = (currentEvent) => {
+    //Making the event a string
+    var data = JSON.stringify({
+      start: currentEvent.start,
+      end: currentEvent.end,
+      title: currentEvent.title,
+      summary: currentEvent.summary,
+    });
+
+    //Sending the event to the database
+    var config = {
+      method: "post",
+      url: "http://10.0.2.2:3001/delete",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: data,
+    };
+
+    this.getEvents();
     Axios(config);
   };
 
@@ -176,15 +198,13 @@ export class AdminEvent extends Component {
 
   //Get all events from database
   getEvents = async () => {
-    const ev = await Axios.get(
-      "https://dcpa-app.herokuapp.com/event" || "http://localhost:3001/event",
-      {
-        headers: {
-          "content-type": "text/json",
-        },
-      }
-    ).catch((error) => console.log(error));
+    const ev = await Axios.get("http://10.0.2.2:3001/event", {
+      headers: {
+        "content-type": "text/json",
+      },
+    }).catch((error) => console.log(error));
     let arr = ev.data.message;
+    this.setState({ events: [] });
     //Pushing all events to the events array
     for (let i = 0; i < arr.length; i++) {
       this.state.events.push({
@@ -538,7 +558,16 @@ export class AdminEvent extends Component {
                   {this.state.currEvent.summary}
                 </Text>
               </View>
-              <View style={styles.bottomContainer}>
+              <View
+                style={{
+                  flex: 1,
+                  flexDirection: "row",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  marginBottom: 10,
+                  marginTop: 7,
+                }}
+              >
                 <Button
                   title={"Close"}
                   titleStyle={{
@@ -553,6 +582,25 @@ export class AdminEvent extends Component {
                     width: 100,
                   }}
                   onPress={() => {
+                    this.toggleEvent();
+                  }}
+                />
+                <Button
+                  title={"Delete"}
+                  titleStyle={{
+                    color: "white",
+                    fontSize: 18,
+                    fontWeight: "bold",
+                  }}
+                  buttonStyle={{
+                    backgroundColor: "#ea6227",
+                    borderRadius: 8,
+                    marginLeft: 12,
+                    width: 100,
+                  }}
+                  onPress={() => {
+                    this.deleteEvent(this.state.currEvent);
+                    alert("Event Successfully Deleted");
                     this.toggleEvent();
                   }}
                 />
