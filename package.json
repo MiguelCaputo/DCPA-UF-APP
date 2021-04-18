@@ -9,8 +9,9 @@
     "yarn": "1.5.1"
   },
   "scripts": {
-    "start": "cd App && node index.js",
-    "server": "cd App && node index.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "server": "node index.js"
   },
   "repository": {
     "type": "git",
