@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View, Text, TextInput } from "react-native";
+import { StyleSheet, View, Text, TextInput, LogBox } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { Button } from "react-native-elements";
@@ -17,6 +17,8 @@ import DashboardComponent from "./Screens/Dashboard";
 
 const Stack = createStackNavigator();
 const AuthContext = React.createContext();
+
+LogBox.ignoreAllLogs(); //Ignore all log notifications
 
 //Function to easily create a stack screen
 const createScreen = (name, comp, color, trans) => {

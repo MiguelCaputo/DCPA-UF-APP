@@ -114,7 +114,7 @@ export class Event extends Component {
           }}
           visible={this.state.isEventVisible}
         >
-          <View style={{ flex: 1 }}>
+          <View style={{ flex: 1, backgroundColor: "#b5d5e3" }}>
             <Text style={styles.title}>{this.state.currEvent.title}</Text>
             <View style={styles.inputContainer}>
               <Text style={styles.inputTitle}>

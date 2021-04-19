@@ -276,7 +276,7 @@ export class AdminEvent extends Component {
           }}
           visible={this.state.isModalVisible}
         >
-          <ScrollView style={{ flex: 1 }}>
+          <ScrollView style={{ flex: 1, backgroundColor: "#b5d5e3" }}>
             <Text style={styles.title}>ADD A NEW EVENT</Text>
             <View>
               <View style={styles.inputContainer}>
@@ -531,7 +531,7 @@ export class AdminEvent extends Component {
           }}
           visible={this.state.isEventVisible}
         >
-          <View style={{ flex: 1 }}>
+          <View style={{ flex: 1, backgroundColor: "#b5d5e3" }}>
             <Text style={styles.title}>{this.state.currEvent.title}</Text>
             <View style={styles.inputContainer}>
               <Text style={styles.inputTitle}>
