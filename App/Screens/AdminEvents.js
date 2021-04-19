@@ -10,7 +10,6 @@ import {
   TextInput,
   Modal,
   Platform,
-  ImageBackground,
   LogBox,
 } from "react-native";
 import { Button } from "react-native-elements";
@@ -273,238 +272,67 @@ export class AdminEvent extends Component {
             alignItems: "center",
             justifyContent: "center",
             width: "100%",
+            backgroundColor: "#b5d5e3",
           }}
           visible={this.state.isModalVisible}
         >
-          <ImageBackground
-            source={require("../assets/back.png")}
-            style={{ width: "100%", height: "100%" }}
-          >
-            <ScrollView style={{ flex: 1 }}>
-              <Text style={styles.title}>ADD A NEW EVENT</Text>
-              <View>
-                <View style={styles.inputContainer}>
-                  <Text style={styles.inputTitle}>Enter Event Title</Text>
-                  <TextInput
-                    style={styles.input}
-                    autoCapitalize="none"
-                    onFocus={() =>
-                      this.setState({
-                        isEndTimeVisible: false,
-                        isStartTimeVisible: false,
-                      })
-                    }
-                    onChangeText={(text) => {
-                      this.setState({ title: text });
-                    }}
-                  />
-                </View>
-                <View style={styles.inputContainer}>
-                  <Text style={styles.inputTitle}>Select Start Date</Text>
-                  <DatePicker
-                    selected={new Date()}
-                    minDate={new Date()}
-                    maxDate={
-                      new Date(
-                        new Date().setFullYear(new Date().getFullYear() + 1)
-                      )
-                    }
-                    format="YYYY-MM-DD"
-                    confirmBtnText="Confirm"
-                    cancelBtnText="Cancel"
-                    date={this.state.startDate}
-                    customStyles={{
-                      dateIcon: {
-                        position: "absolute",
-                        left: 0,
-                        top: 4,
-                        marginLeft: 12,
-                      },
-                      dateInput: {
-                        marginLeft: 50,
-                      },
-                    }}
-                    onDateChange={(date) => {
-                      this.setState({
-                        startDate: date,
-                        isEndTimeVisible: false,
-                        isStartTimeVisible: false,
-                      });
-                    }}
-                  />
-                </View>
-                <View style={styles.inputContainer}>
-                  <Text style={styles.inputTitle}>Select Start Time</Text>
-                  <Button
-                    title={"See Timer"}
-                    titleStyle={{
-                      color: "white",
-                      fontSize: 18,
-                      fontWeight: "bold",
-                    }}
-                    buttonStyle={{
-                      backgroundColor: "#ea6227",
-                      borderRadius: 8,
-                      marginLeft: 12,
-                      width: "40%",
-                    }}
-                    onPress={() =>
-                      this.setState({
-                        isStartTimeVisible: true,
-                        isEndTimeVisible: false,
-                      })
-                    }
-                  />
-                  {this.state.isStartTimeVisible && (
-                    <DateTimePicker
-                      testID="dateTimePicker"
-                      value={new Date()}
-                      mode="time"
-                      is24Hour={true}
-                      display="default"
-                      onChange={(event, data) => {
-                        if (Platform.OS == "android") {
-                          this.setState({
-                            startTime: data,
-                            isEndTimeVisible: false,
-                            isStartTimeVisible: false,
-                          });
-                        } else {
-                          this.setState({
-                            startTime: data,
-                            isEndTimeVisible: false,
-                          });
-                        }
-                      }}
-                    />
-                  )}
-                </View>
-                <View style={styles.inputContainer}>
-                  <Text style={styles.inputTitle}>Select End Date</Text>
-                  <DatePicker
-                    selected={this.state.endDate}
-                    minDate={this.state.startDate}
-                    maxDate={
-                      new Date(
-                        new Date().setFullYear(new Date().getFullYear() + 1)
-                      )
-                    }
-                    format="YYYY-MM-DD"
-                    confirmBtnText="Confirm"
-                    cancelBtnText="Cancel"
-                    customStyles={{
-                      dateIcon: {
-                        position: "absolute",
-                        left: 0,
-                        top: 4,
-                        marginLeft: 12,
-                      },
-                      dateInput: {
-                        marginLeft: 50,
-                      },
-                    }}
-                    onDateChange={(date) => {
-                      this.setState({
-                        endDate: date,
-                        isEndTimeVisible: false,
-                        isStartTimeVisible: false,
-                      });
-                    }}
-                  />
-                </View>
-                <View style={styles.inputContainer}>
-                  <Text style={styles.inputTitle}>Select End Time</Text>
-                  <Button
-                    title={"See Timer"}
-                    titleStyle={{
-                      color: "white",
-                      fontSize: 18,
-                      fontWeight: "bold",
-                    }}
-                    buttonStyle={{
-                      backgroundColor: "#ea6227",
-                      borderRadius: 8,
-                      marginLeft: 12,
-                      width: "40%",
-                    }}
-                    onPress={() =>
-                      this.setState({
-                        isEndTimeVisible: true,
-                        isStartTimeVisible: false,
-                      })
-                    }
-                  />
-                  {this.state.isEndTimeVisible && (
-                    <DateTimePicker
-                      testID="dateTimePicker"
-                      value={new Date()}
-                      mode="time"
-                      is24Hour={true}
-                      display="default"
-                      onChange={(event, data) => {
-                        if (Platform.OS == "android") {
-                          this.setState({
-                            endTime: data,
-                            isEndTimeVisible: false,
-                            isStartTimeVisible: false,
-                          });
-                        } else {
-                          this.setState({
-                            endTime: data,
-                            isStartTimeVisible: false,
-                          });
-                        }
-                      }}
-                    />
-                  )}
-                </View>
-                <View style={styles.inputContainer}>
-                  <Text style={styles.inputTitle}>Enter Event Description</Text>
-                  <TextInput
-                    style={styles.input}
-                    autoCapitalize="none"
-                    onFocus={() =>
-                      this.setState({
-                        isEndTimeVisible: false,
-                        isStartTimeVisible: false,
-                      })
-                    }
-                    multiline={true}
-                    onChangeText={(text) => {
-                      this.setState({ description: text });
-                    }}
-                  />
-                </View>
-              </View>
-              <View
-                style={{
-                  flex: 1,
-                  flexDirection: "row",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  marginBottom: 10,
-                  marginTop: 7,
-                }}
-              >
-                <Button
-                  title={"Add Event"}
-                  titleStyle={{
-                    color: "white",
-                    fontSize: 18,
-                    fontWeight: "bold",
-                  }}
-                  buttonStyle={{
-                    backgroundColor: "#ea6227",
-                    borderRadius: 8,
-                    marginRight: 12,
-                    width: 120,
-                  }}
-                  onPress={() => {
-                    this.addEvent();
+          <ScrollView style={{ flex: 1 }}>
+            <Text style={styles.title}>ADD A NEW EVENT</Text>
+            <View>
+              <View style={styles.inputContainer}>
+                <Text style={styles.inputTitle}>Enter Event Title</Text>
+                <TextInput
+                  style={styles.input}
+                  autoCapitalize="none"
+                  onFocus={() =>
+                    this.setState({
+                      isEndTimeVisible: false,
+                      isStartTimeVisible: false,
+                    })
+                  }
+                  onChangeText={(text) => {
+                    this.setState({ title: text });
                   }}
                 />
+              </View>
+              <View style={styles.inputContainer}>
+                <Text style={styles.inputTitle}>Select Start Date</Text>
+                <DatePicker
+                  selected={new Date()}
+                  minDate={new Date()}
+                  maxDate={
+                    new Date(
+                      new Date().setFullYear(new Date().getFullYear() + 1)
+                    )
+                  }
+                  format="YYYY-MM-DD"
+                  confirmBtnText="Confirm"
+                  cancelBtnText="Cancel"
+                  date={this.state.startDate}
+                  customStyles={{
+                    dateIcon: {
+                      position: "absolute",
+                      left: 0,
+                      top: 4,
+                      marginLeft: 12,
+                    },
+                    dateInput: {
+                      marginLeft: 50,
+                    },
+                  }}
+                  onDateChange={(date) => {
+                    this.setState({
+                      startDate: date,
+                      isEndTimeVisible: false,
+                      isStartTimeVisible: false,
+                    });
+                  }}
+                />
+              </View>
+              <View style={styles.inputContainer}>
+                <Text style={styles.inputTitle}>Select Start Time</Text>
                 <Button
-                  title={"Cancel"}
+                  title={"See Timer"}
                   titleStyle={{
                     color: "white",
                     fontSize: 18,
@@ -514,16 +342,183 @@ export class AdminEvent extends Component {
                     backgroundColor: "#ea6227",
                     borderRadius: 8,
                     marginLeft: 12,
-                    width: 120,
+                    width: "40%",
                   }}
-                  onPress={() => {
-                    this.cleanState();
-                    this.toggleModal();
+                  onPress={() =>
+                    this.setState({
+                      isStartTimeVisible: true,
+                      isEndTimeVisible: false,
+                    })
+                  }
+                />
+                {this.state.isStartTimeVisible && (
+                  <DateTimePicker
+                    testID="dateTimePicker"
+                    value={new Date()}
+                    mode="time"
+                    is24Hour={true}
+                    display="default"
+                    onChange={(event, data) => {
+                      if (Platform.OS == "android") {
+                        this.setState({
+                          startTime: data,
+                          isEndTimeVisible: false,
+                          isStartTimeVisible: false,
+                        });
+                      } else {
+                        this.setState({
+                          startTime: data,
+                          isEndTimeVisible: false,
+                        });
+                      }
+                    }}
+                  />
+                )}
+              </View>
+              <View style={styles.inputContainer}>
+                <Text style={styles.inputTitle}>Select End Date</Text>
+                <DatePicker
+                  selected={this.state.endDate}
+                  minDate={this.state.startDate}
+                  maxDate={
+                    new Date(
+                      new Date().setFullYear(new Date().getFullYear() + 1)
+                    )
+                  }
+                  format="YYYY-MM-DD"
+                  confirmBtnText="Confirm"
+                  cancelBtnText="Cancel"
+                  customStyles={{
+                    dateIcon: {
+                      position: "absolute",
+                      left: 0,
+                      top: 4,
+                      marginLeft: 12,
+                    },
+                    dateInput: {
+                      marginLeft: 50,
+                    },
+                  }}
+                  onDateChange={(date) => {
+                    this.setState({
+                      endDate: date,
+                      isEndTimeVisible: false,
+                      isStartTimeVisible: false,
+                    });
                   }}
                 />
               </View>
-            </ScrollView>
-          </ImageBackground>
+              <View style={styles.inputContainer}>
+                <Text style={styles.inputTitle}>Select End Time</Text>
+                <Button
+                  title={"See Timer"}
+                  titleStyle={{
+                    color: "white",
+                    fontSize: 18,
+                    fontWeight: "bold",
+                  }}
+                  buttonStyle={{
+                    backgroundColor: "#ea6227",
+                    borderRadius: 8,
+                    marginLeft: 12,
+                    width: "40%",
+                  }}
+                  onPress={() =>
+                    this.setState({
+                      isEndTimeVisible: true,
+                      isStartTimeVisible: false,
+                    })
+                  }
+                />
+                {this.state.isEndTimeVisible && (
+                  <DateTimePicker
+                    testID="dateTimePicker"
+                    value={new Date()}
+                    mode="time"
+                    is24Hour={true}
+                    display="default"
+                    onChange={(event, data) => {
+                      if (Platform.OS == "android") {
+                        this.setState({
+                          endTime: data,
+                          isEndTimeVisible: false,
+                          isStartTimeVisible: false,
+                        });
+                      } else {
+                        this.setState({
+                          endTime: data,
+                          isStartTimeVisible: false,
+                        });
+                      }
+                    }}
+                  />
+                )}
+              </View>
+              <View style={styles.inputContainer}>
+                <Text style={styles.inputTitle}>Enter Event Description</Text>
+                <TextInput
+                  style={styles.input}
+                  autoCapitalize="none"
+                  onFocus={() =>
+                    this.setState({
+                      isEndTimeVisible: false,
+                      isStartTimeVisible: false,
+                    })
+                  }
+                  multiline={true}
+                  onChangeText={(text) => {
+                    this.setState({ description: text });
+                  }}
+                />
+              </View>
+            </View>
+            <View
+              style={{
+                flex: 1,
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "center",
+                marginBottom: 10,
+                marginTop: 7,
+              }}
+            >
+              <Button
+                title={"Add Event"}
+                titleStyle={{
+                  color: "white",
+                  fontSize: 18,
+                  fontWeight: "bold",
+                }}
+                buttonStyle={{
+                  backgroundColor: "#ea6227",
+                  borderRadius: 8,
+                  marginRight: 12,
+                  width: 120,
+                }}
+                onPress={() => {
+                  this.addEvent();
+                }}
+              />
+              <Button
+                title={"Cancel"}
+                titleStyle={{
+                  color: "white",
+                  fontSize: 18,
+                  fontWeight: "bold",
+                }}
+                buttonStyle={{
+                  backgroundColor: "#ea6227",
+                  borderRadius: 8,
+                  marginLeft: 12,
+                  width: 120,
+                }}
+                onPress={() => {
+                  this.cleanState();
+                  this.toggleModal();
+                }}
+              />
+            </View>
+          </ScrollView>
         </Modal>
 
         <Modal
@@ -532,90 +527,86 @@ export class AdminEvent extends Component {
             alignItems: "center",
             justifyContent: "center",
             width: "100%",
+            backgroundColor: "#b5d5e3",
           }}
           visible={this.state.isEventVisible}
         >
-          <ImageBackground
-            source={require("../assets/back.png")}
-            style={{ width: "100%", height: "100%" }}
-          >
-            <View style={{ flex: 1 }}>
-              <Text style={styles.title}>{this.state.currEvent.title}</Text>
-              <View style={styles.inputContainer}>
-                <Text style={styles.inputTitle}>
-                  Begins: {this.state.currEvent.start}
-                </Text>
-              </View>
-              <View style={styles.infoContainer}>
-                <Text style={styles.inputTitle}>
-                  Ends: {this.state.currEvent.end}
-                </Text>
-              </View>
-              <Text
-                style={{
-                  paddingTop: "3%",
-                  textAlign: "center",
-                  fontWeight: "bold",
-                  fontSize: 30,
-                  color: "white",
-                }}
-              >
-                More Information
+          <View style={{ flex: 1 }}>
+            <Text style={styles.title}>{this.state.currEvent.title}</Text>
+            <View style={styles.inputContainer}>
+              <Text style={styles.inputTitle}>
+                Begins: {this.state.currEvent.start}
               </Text>
-              <View style={styles.infoContainer}>
-                <Text style={styles.inputTitle}>
-                  {this.state.currEvent.summary}
-                </Text>
-              </View>
-              <View
-                style={{
-                  flex: 1,
-                  flexDirection: "row",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  marginBottom: 10,
-                  marginTop: 7,
-                }}
-              >
-                <Button
-                  title={"Close"}
-                  titleStyle={{
-                    color: "white",
-                    fontSize: 18,
-                    fontWeight: "bold",
-                  }}
-                  buttonStyle={{
-                    backgroundColor: "#ea6227",
-                    borderRadius: 8,
-                    marginLeft: 12,
-                    width: 100,
-                  }}
-                  onPress={() => {
-                    this.toggleEvent();
-                  }}
-                />
-                <Button
-                  title={"Delete"}
-                  titleStyle={{
-                    color: "white",
-                    fontSize: 18,
-                    fontWeight: "bold",
-                  }}
-                  buttonStyle={{
-                    backgroundColor: "#ea6227",
-                    borderRadius: 8,
-                    marginLeft: 12,
-                    width: 100,
-                  }}
-                  onPress={() => {
-                    this.deleteEvent(this.state.currEvent);
-                    alert("Event Successfully Deleted");
-                    this.toggleEvent();
-                  }}
-                />
-              </View>
             </View>
-          </ImageBackground>
+            <View style={styles.infoContainer}>
+              <Text style={styles.inputTitle}>
+                Ends: {this.state.currEvent.end}
+              </Text>
+            </View>
+            <Text
+              style={{
+                paddingTop: "3%",
+                textAlign: "center",
+                fontWeight: "bold",
+                fontSize: 30,
+                color: "#ea6227",
+              }}
+            >
+              More Information
+            </Text>
+            <View style={styles.infoContainer}>
+              <Text style={styles.inputTitle}>
+                {this.state.currEvent.summary}
+              </Text>
+            </View>
+            <View
+              style={{
+                flex: 1,
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "center",
+                marginBottom: 10,
+                marginTop: 7,
+              }}
+            >
+              <Button
+                title={"Close"}
+                titleStyle={{
+                  color: "white",
+                  fontSize: 18,
+                  fontWeight: "bold",
+                }}
+                buttonStyle={{
+                  backgroundColor: "#ea6227",
+                  borderRadius: 8,
+                  marginLeft: 12,
+                  width: 100,
+                }}
+                onPress={() => {
+                  this.toggleEvent();
+                }}
+              />
+              <Button
+                title={"Delete"}
+                titleStyle={{
+                  color: "white",
+                  fontSize: 18,
+                  fontWeight: "bold",
+                }}
+                buttonStyle={{
+                  backgroundColor: "#ea6227",
+                  borderRadius: 8,
+                  marginLeft: 12,
+                  width: 100,
+                }}
+                onPress={() => {
+                  this.deleteEvent(this.state.currEvent);
+                  alert("Event Successfully Deleted");
+                  this.toggleEvent();
+                }}
+              />
+            </View>
+          </View>
         </Modal>
       </View>
     );
@@ -636,7 +627,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontWeight: "bold",
     fontSize: 30,
-    color: "white",
+    color: "#ea6227",
   },
   input: {
     height: 40,
@@ -648,8 +639,7 @@ const styles = StyleSheet.create({
   inputTitle: {
     marginLeft: 12,
     marginBottom: 5,
-    fontWeight: "bold",
-    color: "white",
+    color: "black",
     fontSize: 20,
   },
   inputContainer: {

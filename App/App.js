@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  StyleSheet,
-  View,
-  ImageBackground,
-  Text,
-  TextInput,
-} from "react-native";
+import { StyleSheet, View, Text, TextInput } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { Button } from "react-native-elements";
@@ -59,10 +53,7 @@ function LoginComponent() {
 
   //Rendering
   return (
-    <ImageBackground
-      source={require("./assets/back.png")}
-      style={{ width: "100%", height: "100%" }}
-    >
+    <View style={{ backgroundColor: "#b5d5e3", height: "100%" }}>
       <View style={styles.container}>
         <Text style={styles.title}>DCPA SIGN IN</Text>
         <View style={styles.inputContainer}>
@@ -102,7 +93,7 @@ function LoginComponent() {
           />
         </View>
       </View>
-    </ImageBackground>
+    </View>
   );
 }
 
@@ -253,8 +244,7 @@ const styles = StyleSheet.create({
   inputTitle: {
     marginLeft: 12,
     marginBottom: 5,
-    fontWeight: "bold",
-    color: "white",
+    color: "black",
     fontSize: 20,
   },
   inputContainer: {
@@ -263,7 +253,7 @@ const styles = StyleSheet.create({
   title: {
     paddingTop: "10%",
     paddingBottom: "3%",
-    color: "white",
+    color: "#ea6227",
     textAlign: "center",
     fontWeight: "bold",
     fontSize: 30,

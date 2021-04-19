@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "react-native-elements";
-import { StyleSheet, View, Text, ImageBackground } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 
 //Function to easily create a button
 const button = (title, nav, navigation, color) => {
@@ -26,10 +26,7 @@ const button = (title, nav, navigation, color) => {
 //Rendering screen that gives information about the tours
 const ScheduleTourComponent = ({ navigation }) => {
   return (
-    <ImageBackground
-      source={require("../assets/back.png")}
-      style={{ width: "100%", height: "100%" }}
-    >
+    <View style={{ backgroundColor: "#b5d5e3", height: "100%" }}>
       <View style={styles.container}>
         <Text style={styles.title}>SCHEDULE A TOUR</Text>
 
@@ -43,11 +40,12 @@ const ScheduleTourComponent = ({ navigation }) => {
           {"\n"}
           {"\n"}
           Send us an email or schedule one here to let us know you are
-          interested!{"\n"}
+          interested!
+          {"\n"}
         </Text>
         {button("Schedule Tour", "Schedule Tour_", navigation, "#ea6227")}
       </View>
-    </ImageBackground>
+    </View>
   );
 };
 
@@ -63,14 +61,13 @@ const styles = StyleSheet.create({
   title: {
     paddingTop: "10%",
     paddingBottom: "3%",
-    color: "white",
+    color: "#ea6227",
     textAlign: "center",
     fontWeight: "bold",
     fontSize: 30,
   },
   text: {
-    color: "white",
-    fontWeight: "bold",
+    color: "black",
     paddingBottom: "5%",
     fontSize: 20,
   },

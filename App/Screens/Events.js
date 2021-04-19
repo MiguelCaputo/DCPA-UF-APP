@@ -5,7 +5,6 @@ import {
   Dimensions,
   Text,
   Modal,
-  ImageBackground,
   LogBox,
 } from "react-native";
 import { Button } from "react-native-elements";
@@ -111,62 +110,58 @@ export class Event extends Component {
             alignItems: "center",
             justifyContent: "center",
             width: "100%",
+            backgroundColor: "#b5d5e3",
           }}
           visible={this.state.isEventVisible}
         >
-          <ImageBackground
-            source={require("../assets/back.png")}
-            style={{ width: "100%", height: "100%" }}
-          >
-            <View style={{ flex: 1 }}>
-              <Text style={styles.title}>{this.state.currEvent.title}</Text>
-              <View style={styles.inputContainer}>
-                <Text style={styles.inputTitle}>
-                  Begins: {this.state.currEvent.start}
-                </Text>
-              </View>
-              <View style={styles.infoContainer}>
-                <Text style={styles.inputTitle}>
-                  Ends: {this.state.currEvent.end}
-                </Text>
-              </View>
-              <Text
-                style={{
-                  paddingTop: "3%",
-                  textAlign: "center",
-                  fontWeight: "bold",
-                  fontSize: 30,
-                  color: "white",
-                }}
-              >
-                More Information
+          <View style={{ flex: 1 }}>
+            <Text style={styles.title}>{this.state.currEvent.title}</Text>
+            <View style={styles.inputContainer}>
+              <Text style={styles.inputTitle}>
+                Begins: {this.state.currEvent.start}
               </Text>
-              <View style={styles.infoContainer}>
-                <Text style={styles.inputTitle}>
-                  {this.state.currEvent.summary}
-                </Text>
-              </View>
-              <View style={styles.bottomContainer}>
-                <Button
-                  title={"Close"}
-                  titleStyle={{
-                    color: "white",
-                    fontSize: 18,
-                    fontWeight: "bold",
-                  }}
-                  buttonStyle={{
-                    backgroundColor: "#ea6227",
-                    borderRadius: 8,
-                    marginLeft: 12,
-                    width: 100,
-                  }}
-                  onPress={() => {
-                    this.toggleEvent();
-                  }}
-                />
-              </View>
             </View>
-          </ImageBackground>
+            <View style={styles.infoContainer}>
+              <Text style={styles.inputTitle}>
+                Ends: {this.state.currEvent.end}
+              </Text>
+            </View>
+            <Text
+              style={{
+                paddingTop: "3%",
+                textAlign: "center",
+                fontWeight: "bold",
+                fontSize: 30,
+                color: "white",
+              }}
+            >
+              More Information
+            </Text>
+            <View style={styles.infoContainer}>
+              <Text style={styles.inputTitle}>
+                {this.state.currEvent.summary}
+              </Text>
+            </View>
+            <View style={styles.bottomContainer}>
+              <Button
+                title={"Close"}
+                titleStyle={{
+                  color: "white",
+                  fontSize: 18,
+                  fontWeight: "bold",
+                }}
+                buttonStyle={{
+                  backgroundColor: "#ea6227",
+                  borderRadius: 8,
+                  marginLeft: 12,
+                  width: 100,
+                }}
+                onPress={() => {
+                  this.toggleEvent();
+                }}
+              />
+            </View>
+          </View>
         </Modal>
       </View>
     );
@@ -187,13 +182,12 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontWeight: "bold",
     fontSize: 30,
-    color: "white",
+    color: "#ea6227",
   },
   inputTitle: {
     marginLeft: 12,
     marginBottom: 5,
-    fontWeight: "bold",
-    color: "white",
+    color: "black",
     fontSize: 20,
   },
   inputContainer: {
