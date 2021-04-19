@@ -142,7 +142,7 @@ const App = () => {
   getURL = () => {
     var current_url = "http://localhost:3001";
     if (process.env.NODE_ENV.localeCompare("development") == 0)
-      current_url = process.env.URL;
+      current_url = "https://dcpa-app.herokuapp.com";
     return current_url;
   };
 
@@ -153,9 +153,6 @@ const App = () => {
         var username = data.username;
         var password = data.password;
         var url = getURL();
-        console.log(url);
-        console.log(process.env.URL);
-        console.log(process.env.URI);
         const res1 = await Axios.get(url + "/login", {
           headers: {
             "content-type": "text/json",
@@ -206,7 +203,6 @@ const App = () => {
             // User is signed in
             <>
               {createScreen("Dashboard", DashboardComponent, "#ea6227", true)}
-              {createScreen("Calendar", CalendarComponent, "#ea6227", true)}
               {createScreen("Map", MapComponent, "#ea6227", true)}
               {createScreen("Admin Event", AdminEvent, "#ea6227", false)}
               {createScreen("About Us", About, "#ea6227", true)}
