@@ -11,10 +11,10 @@ import {
   Modal,
   Platform,
   ImageBackground,
+  LogBox,
 } from "react-native";
 import { Button } from "react-native-elements";
 import EventCalendar from "react-native-events-calendar";
-import { LogBox } from "react-native";
 import Axios from "axios";
 
 // Ignoring warnings of the app

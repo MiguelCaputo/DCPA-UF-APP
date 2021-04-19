@@ -1,12 +1,6 @@
 import React from "react";
 import { Button } from "react-native-elements";
-
-import {
-  StyleSheet,
-  View,
-  Text,
-  ImageBackground,
-} from "react-native";
+import { StyleSheet, View, Text, ImageBackground } from "react-native";
 
 //Function to easily create a button
 const button = (title, nav, navigation, color) => {
@@ -17,7 +11,7 @@ const button = (title, nav, navigation, color) => {
         titleStyle={{
           color: "white",
           fontSize: 20,
-          fontWeight: "bold"
+          fontWeight: "bold",
         }}
         buttonStyle={{
           backgroundColor: color,
@@ -31,7 +25,6 @@ const button = (title, nav, navigation, color) => {
 
 //Rendering screen that gives information about the tours
 const ScheduleTourComponent = ({ navigation }) => {
-
   return (
     <ImageBackground
       source={require("../assets/back.png")}

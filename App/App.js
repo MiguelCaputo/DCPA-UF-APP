@@ -9,6 +9,8 @@ import {
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { Button } from "react-native-elements";
+import Axios from "axios";
+
 import TourFormComponent from "./Screens/TourForm";
 import MapComponent from "./Screens/Map";
 import HomeComponent from "./Screens/Home";
@@ -18,7 +20,6 @@ import About from "./Screens/AboutUs";
 import Contact from "./Screens/ContactUs";
 import ScheduleTourComponent from "./Screens/ScheduleTours";
 import DashboardComponent from "./Screens/Dashboard";
-import Axios from "axios";
 
 const Stack = createStackNavigator();
 const AuthContext = React.createContext();

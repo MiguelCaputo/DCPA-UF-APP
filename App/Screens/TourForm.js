@@ -10,9 +10,9 @@ import {
   Linking,
   ScrollView,
   TextInput,
+  Dimensions,
 } from "react-native";
 import { Button } from "react-native-elements";
-import { Dimensions } from "react-native";
 
 //Rendering the form to send emails
 const TourFormComponent = () => {
