@@ -4,9 +4,9 @@
     "slug": "dcpa-uf",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/dc.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/dc.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -26,7 +26,7 @@
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/dc.png"
     },
     "description": "DCP Ambassadors app for CEN3031",
     "githubUrl": "https://github.com/MiguelCaputo/DCPA-UF-APP"
