@@ -32,24 +32,20 @@ const About = () => {
             />
           </View>
           <Text style={styles.paragraphTitle}>Vision</Text>
-          <View>
-            <Text style={styles.text}>
-              DCPA's vision is to be recognized globally as a preeminent College
-              for teaching, research, creative scholarship, and outreach in the
-              built and natural environments.
-            </Text>
-          </View>
+          <Text style={styles.text}>
+            DCPA's vision is to be recognized globally as a preeminent College
+            for teaching, research, creative scholarship, and outreach in the
+            built and natural environments.
+          </Text>
           <Text style={styles.paragraphTitle}>Mission</Text>
-          <View>
-            <Text style={styles.text}>
-              The mission of the College of Design Construction and Planning is
-              to improve the quality of the built and natural environments
-              through offering exceptional educational and professional programs
-              and research/scholarship initiatives that address the planning,
-              design, construction, and preservation of the built and natural
-              environments.
-            </Text>
-          </View>
+          <Text style={styles.text}>
+            The mission of the College of Design Construction and Planning is to
+            improve the quality of the built and natural environments through
+            offering exceptional educational and professional programs and
+            research/scholarship initiatives that address the planning, design,
+            construction, and preservation of the built and natural
+            environments.{" "}
+          </Text>
           <Text
             style={{
               fontSize: 29,
@@ -73,22 +69,17 @@ const About = () => {
               source={require("../assets/dcpa.png")}
             />
           </View>
-          <View>
-            <Text style={styles.text}>
-              DCP Ambassadors are a select group of students in the college who
-              have demonstrated outstanding academic success and leadership.
-              Their objective is to generate interest and knowledge about the
-              college.
-            </Text>
-          </View>
+          <Text style={styles.text}>
+            DCP Ambassadors are a select group of students in the college who
+            have demonstrated outstanding academic success and leadership. Their
+            objective is to generate interest and knowledge about the college.
+          </Text>
           <Text style={styles.paragraphTitle}>List of Programs or Events</Text>
-          <View>
-            <Text style={styles.text}>
-              - College Tours{"\n"}- Preview{"\n"}- DCP Career Fair{"\n"}- DCP
-              Research Symposium{"\n"}- New Student Showcase{"\n"}- Gator Design
-              & Construction Open House{"\n"}- DCP Homecoming Barbeque
-            </Text>
-          </View>
+          <Text style={styles.text}>
+            - College Tours{"\n"}- Preview{"\n"}- DCP Career Fair{"\n"}- DCP
+            Research Symposium{"\n"}- New Student Showcase{"\n"}- DCP Homecoming
+            Barbeque{" "}
+          </Text>
         </View>
       </View>
     </ScrollView>
@@ -112,9 +103,8 @@ const styles = StyleSheet.create({
     color: "black",
     fontSize: 20,
     paddingBottom: 20,
-    alignSelf: "stretch",
-    textAlign: "left",
-    textBreakStrategy: "simple",
+    flex: 1,
+    flexWrap: "wrap",
   },
   paragraphTitle: {
     fontSize: 25,
