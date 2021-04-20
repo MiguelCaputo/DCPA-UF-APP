@@ -17,7 +17,6 @@
     "expo-status-bar": "~1.0.4",
     "express": "^4.17.1",
     "formik": "^2.2.6",
-    "heroku-logger": "^0.3.3",
     "mongodb": "^3.6.6",
     "mongodb-client-encryption": "^1.2.3",
     "react": "16.13.1",
