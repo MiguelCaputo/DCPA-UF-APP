@@ -19,7 +19,7 @@ The name for our project is DCPA UF App which is an acronym that simply describe
 
 1. Download the Expo Go app in the app store of your device.
 2. Sign in to the Expo Go account (See Login Credentials Section)
-3. Visit this link “https://expo.io/@dcpadmin/projects/dcpa-uf” on your phone or computer.
+3. Visit this [LINK](https://expo.io/@dcpadmin/projects/dcpa-uf) on your phone or computer.
 If you open the link using your phone click on the “Open Project Using Expo” button.
 If you open the link using your computer scan the QR code.
 4. The app should open on your device and now you can access it whenever you need using the Expo Go app.
