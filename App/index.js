@@ -119,6 +119,6 @@ app.post("/delete", async (req, res) => {
 
 app.listen(process.env.PORT || port, () => {
   //Checking that the server is working
-  logger.info("LISTENING! ", { res: results });
+  logger.info("LISTENING! ", { port: port });
   console.log(`listening at http://localhost:${port}`);
 });
