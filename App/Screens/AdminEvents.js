@@ -201,9 +201,9 @@ export class AdminEvent extends Component {
   getURL = () => {
     var current_url = "http://localhost:3001";
     if (process.env.NODE_ENV.localeCompare("development") == 0) {
-      current_url = process.env.URL;
+      current_url = "https://dcpa-app.herokuapp.com";
     } else if (process.env.NODE_ENV.localeCompare("production") == 0) {
-      current_url = process.env.URL;
+      current_url = "https://dcpa-app.herokuapp.com";
     }
     return current_url;
   };
