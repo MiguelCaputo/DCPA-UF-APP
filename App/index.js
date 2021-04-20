@@ -1,6 +1,7 @@
 const { query, Router } = require("express");
 const express = require("express");
 const myParser = require("body-parser");
+const logger = require("heroku-logger");
 
 //Initializing variables
 var app = express();
@@ -80,6 +81,7 @@ app.get("/login", async (req, res) => {
     const cursor = client.db("test").collection("users").find();
     const results = await cursor.toArray();
     console.log(results);
+    logger.info("LOGIN! ", { res: results });
     res.send({ message: results });
   }
   test();
@@ -117,5 +119,6 @@ app.post("/delete", async (req, res) => {
 
 app.listen(process.env.PORT || port, () => {
   //Checking that the server is working
+  logger.info("LISTENING! ", { res: results });
   console.log(`listening at http://localhost:${port}`);
 });
