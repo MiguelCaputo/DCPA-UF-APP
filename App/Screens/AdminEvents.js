@@ -11,7 +11,6 @@ import {
   Modal,
   Platform,
   LogBox,
-  KeyboardAvoidingView,
 } from "react-native";
 import { Button } from "react-native-elements";
 import EventCalendar from "react-native-events-calendar";
@@ -280,10 +279,7 @@ export class AdminEvent extends Component {
           }}
           visible={this.state.isModalVisible}
         >
-          <KeyboardAvoidingView
-            style={{ flex: 1, backgroundColor: "#b5d5e3" }}
-            behavior="padding"
-          >
+          <ScrollView style={{ flex: 1, backgroundColor: "#b5d5e3" }}>
             <Text style={styles.title}>ADD A NEW EVENT</Text>
             <View>
               <View style={styles.inputContainer}>
@@ -525,7 +521,7 @@ export class AdminEvent extends Component {
                 }}
               />
             </View>
-          </KeyboardAvoidingView>
+          </ScrollView>
         </Modal>
 
         <Modal

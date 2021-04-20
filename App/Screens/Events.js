@@ -135,7 +135,7 @@ export class Event extends Component {
                 textAlign: "center",
                 fontWeight: "bold",
                 fontSize: 30,
-                color: "white",
+                color: "#ea6227",
               }}
             >
               More Information
