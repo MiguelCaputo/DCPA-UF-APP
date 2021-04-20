@@ -4,7 +4,7 @@
     "slug": "dcpa-uf",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/dc.png",
+    "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",

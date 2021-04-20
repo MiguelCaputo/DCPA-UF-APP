@@ -79,6 +79,8 @@ app.get("/login", async (req, res) => {
     await client.connect();
     const cursor = client.db("test").collection("users").find();
     const results = await cursor.toArray();
+    console.log(results);
+    res.send({ message: results });
   }
   test();
 });
