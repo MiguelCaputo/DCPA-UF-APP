@@ -11,6 +11,7 @@ import {
   Modal,
   Platform,
   LogBox,
+  KeyboardAvoidingView,
 } from "react-native";
 import { Button } from "react-native-elements";
 import EventCalendar from "react-native-events-calendar";
@@ -179,9 +180,9 @@ export class AdminEvent extends Component {
       );
       // Restart the variables
       this.cleanState();
-      alert("Event Added Successfully!");
       // Hide the modal
       this.toggleModal();
+      alert("Event Added Successfully!");
     }
   };
 
@@ -200,8 +201,11 @@ export class AdminEvent extends Component {
   // Get the server url
   getURL = () => {
     var current_url = "http://localhost:3001";
-    if (process.env.NODE_ENV.localeCompare("development") == 0)
-      current_url = process.env.URL;
+    if (process.env.NODE_ENV.localeCompare("development") == 0) {
+      current_url = "https://dcpa-app.herokuapp.com";
+    } else if (process.env.NODE_ENV.localeCompare("production") == 0) {
+      current_url = "https://dcpa-app.herokuapp.com";
+    }
     return current_url;
   };
 
@@ -276,7 +280,10 @@ export class AdminEvent extends Component {
           }}
           visible={this.state.isModalVisible}
         >
-          <ScrollView style={{ flex: 1, backgroundColor: "#b5d5e3" }}>
+          <KeyboardAvoidingView
+            style={{ flex: 1, backgroundColor: "#b5d5e3" }}
+            behavior="padding"
+          >
             <Text style={styles.title}>ADD A NEW EVENT</Text>
             <View>
               <View style={styles.inputContainer}>
@@ -518,7 +525,7 @@ export class AdminEvent extends Component {
                 }}
               />
             </View>
-          </ScrollView>
+          </KeyboardAvoidingView>
         </Modal>
 
         <Modal
@@ -601,8 +608,8 @@ export class AdminEvent extends Component {
                 }}
                 onPress={() => {
                   this.deleteEvent(this.state.currEvent);
-                  alert("Event Successfully Deleted");
                   this.toggleEvent();
+                  alert("Event Successfully Deleted");
                 }}
               />
             </View>
